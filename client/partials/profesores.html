@@ -1,0 +1,69 @@
+<div ng-controller="profesoresController">
+  <div class="container">
+    <br>
+    <form class="form-inline">
+      <div class="form-group mb-2">
+        <select class="form-control" ng-model="profesor.titulo">
+          <option></option>
+          <option>Dr.</option>
+          <option>Dra.</option>
+          <option>M. C.</option>
+          <option>Sr.</option>
+          <option>Sra.</option>
+          <option>Ing.</option>
+          <option>Lic.</option>
+        </select>
+      </div>
+      <div class="form-group mx-sm-1 mb-2">
+        <input type="text" class="form-control" placeholder="Nombres(s)" ng-model="profesor.nombre">
+      </div>
+      <div class="form-group mx-sm-1 mb-2">
+        <input type="text" class="form-control" placeholder="Apellido paterno" ng-model="profesor.apellido_paterno">
+      </div>
+      <div class="form-group mx-sm-1 mb-2">
+        <input type="text" class="form-control" placeholder="Apellido materno" ng-model="profesor.apellido_materno">
+      </div>
+      <div class="form-group mx-sm-1 mb-2">
+        <input type="number" class="form-control" placeholder="Clave" ng-model="profesor.clave">
+      </div>
+      <button type="submit" class="btn btn-secondary mx-sm-3 mb-2" ng-click="agregar_profesor(profesor)">Agregar profesor</button>
+    </form>
+    <!-- Mensajes de verificación -->
+    <div class="row show-hide-message justify-content-center" ng-show="msg_correcto">
+      <div class="alert alert-success">
+        {{ msg_correcto }}
+      </div>
+    </div>
+    <div class="row show-hide-message justify-content-center" ng-show="msg_error">
+      <div class="alert alert-danger">
+        {{ msg_error }}
+      </div>
+    </div>
+    <br>
+
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th scope="col">Clave</th>
+          <th scope="col">Titulo</th>
+          <th scope="col">Nombre(s)</th>
+          <th scope="col">Apellido paterno</th>
+          <th scope="col">Apellido materno</th>
+          <th scope="col">Acción</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="profesor in profesores">
+          <td>{{ profesor.profesor_clave }}</td>
+          <td>{{ profesor.profesor_titulo }}</td>
+          <td>{{ profesor.profesor_nombre }}</td>
+          <td>{{ profesor.profesor_apellido_paterno }}</td>
+          <td>{{ profesor.profesor_apellido_materno }}</td>
+          <td>
+            <button type="button" class="btn btn-outline-danger btn-sm" ng-click="eliminar_profesor(profesor)">Eliminar</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

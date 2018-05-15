@@ -1,0 +1,68 @@
+<div ng-controller="ueasController">
+  <div class="container">
+    <br>
+    <form class="form-inline">
+      <div class="form-group mb-2">
+        <input type="text" class="form-control" placeholder="Nombre" ng-model="uea.nombre">
+      </div>
+      <div class="form-group mx-sm-1 mb-2">
+        <input type="number" class="form-control" placeholder="Clave" ng-model="uea.clave">
+      </div>
+      <div class="form-group mx-sm-1 mb-2">
+        <input type="number" class="form-control" placeholder="Creditos" ng-model="uea.creditos">
+      </div>
+      <div class="form-group mx-sm-1 mb-2">
+        <input type="text" class="form-control" placeholder="Seriación 1" ng-model="uea.seriacion1">
+      </div>
+      <div class="form-group mx-sm-1 mb-2">
+        <input type="text" class="form-control" placeholder="Seriación 2" ng-model="uea.seriacion2">
+      </div>
+      <div class="form-group mx-sm-1 mb-2">
+        <select class="form-control" ng-model="uea.trimestre">
+          <option></option>
+          <option>P</option>
+          <option>O</option>
+          <option>I</option>
+        </select>
+      </div>
+      <button type="submit" class="btn btn-secondary mb-2" ng-click="agregar_uea(uea)">Agregar UEA</button>
+    </form>
+    <!-- Mensajes de verificación -->
+    <div class="row show-hide-message justify-content-center" ng-show="msg_correcto">
+      <div class="alert alert-success">
+        {{ msg_correcto }}
+      </div>
+    </div>
+    <div class="row show-hide-message justify-content-center" ng-show="msg_error">
+      <div class="alert alert-danger">
+        {{ msg_error }}
+      </div>
+    </div>
+    <br>
+
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th scope="col">Clave</th>
+          <th scope="col">Nombre</th>
+          <th scope="col">Creditos</th>
+          <th scope="col">Seriación</th>
+          <th scope="col">Trimestre</th>
+          <th scope="col">Acción</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="uea in ueas">
+          <td>{{ uea.uea_clave }}</td>
+          <td>{{ uea.uea_nombre }}</td>
+          <td>{{ uea.uea_creditos }}</td>
+          <td>{{ uea.uea_seriacion[0] }} {{ uea.uea_seriacion[1] }}</td>
+          <td>{{ uea.uea_trimestre }}</td>
+          <td>
+            <button type="button" class="btn btn-outline-danger btn-sm" ng-click="eliminar_uea(uea)">Eliminar</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
