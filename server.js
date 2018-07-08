@@ -5,7 +5,9 @@ var app = express();
 
 app.use(body_parser.urlencoded({extended: false}));
 app.use(body_parser.json());
+app.use('/scripts', express.static(__dirname + '/node_modules/'));
 app.use(express.static(path.join(__dirname, "./client")));
+app.use(express.static(__dirname + '/client'));
 
 require("./server/config/mongoose.js");
 

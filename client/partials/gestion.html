@@ -1,1 +1,69 @@
-gestion
+<div ng-controller="gestionController">
+  <div class="container">
+    <br>
+    <form class="form-inline">
+      <div class="form-group mx-sm-1 mb-2">
+        <select class="form-control" ng-model="trimestre">
+          <option></option>
+          <option>O</option>
+          <option>I</option>
+          <option>P</option>
+        </select>
+      </div>
+      <button type="submit" class="btn btn-primary mx-sm-1 mb-2" ng-click="seleccionar_trimestre(trimestre)">Trimestre</button>
+      <button class="btn btn-link" ng-click="descargar_excel()">
+		    <span class="glyphicon glyphicon-share"></span> Descargar a Excel
+	    </button>
+    </form>
+    <br>
+    <table id="tabla" class="table-sm table-striped">
+      <thead>
+        <colgroup>
+          <col span="5">
+          <col span="5" style="background-color:#F6F998">
+        </colgroup>
+        <tr>
+          <th colspan="5" scope="colgroup"></th>
+          <th colspan="5" scope="colgroup" style="text-align:center">HORARIOS</th>
+          <th colspan="3" scope="colgroup"></th>
+        </tr>
+        <tr>
+          <th scope="col">NOMBRE DEL CURSO</th>
+          <th scope="col">CLABE</th>
+          <th scope="col">GRUPO</th>
+          <th scope="col">CUPO MAX.</th>
+          <th scope="col">PROFESOR - NO. ECON.</th>
+          <th scope="colgroup">LUNES</th>
+          <th scope="colgroup">MARTES</th>
+          <th scope="colgroup">MIERCOLES</th>
+          <th scope="colgroup">JUEVES</th>
+          <th scope="colgroup">VIERNES</th>
+          <th scope="col">HORAS</th>
+          <th scope="col">CREDITOS</th>
+          <th scope="col">SERIACIÓN</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="select in trim_selec">
+          <td>{{ select.uea_nombre }}</td>
+          <td>{{ select.uea_clave }}</td>
+          <td><input class="form-control" type="text"></td>
+          <td><input class="form-control" type="text" placeholder="{{ select.uea_cupo_max }}"></td>
+          <td>
+            <select ng-options="profesor as profesor for profesor in profesores" class="form-control-sm" ng-model="item.profesor">
+     		 		    <option value="" disabled>Profesor</option>
+     		 	  </select>
+          </td>
+          <td><input class="form-control" type="time"> - <input class="form-control" type="time"></td>
+          <td><input class="form-control" type="time"> - <input class="form-control" type="time"></td>
+          <td><input class="form-control" type="time"> - <input class="form-control" type="time"></td>
+          <td><input class="form-control" type="time"> - <input class="form-control" type="time"></td>
+          <td><input class="form-control" type="time"> - <input class="form-control" type="time"></td>
+          <td><input class="form-control" type="text"></td>
+          <td>{{ select.uea_creditos }}</td>
+          <td>{{ select.uea_seriacion }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

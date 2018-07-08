@@ -1,3 +1,45 @@
+//====================== controlador gestion ====================
+gesApp.controller("gestionController", function($scope, profesoresFactory, ueasFactory) {
+  $scope.profesores = [];
+
+  profesoresFactory.get_profesores(function(data) {
+    var profesores = data.profesores;
+    var obj;
+    for(var i = 0; i < profesores.length; i++) {
+      obj = profesores[i].profesor_titulo + " " + profesores[i].profesor_nombre + " " + profesores[i].profesor_apellido_paterno + " " + profesores[i].profesor_apellido_materno + " " + profesores[i].profesor_clave;
+      $scope.profesores.push(obj);
+    }
+  });
+
+  ueasFactory.get_ueas(function(data) {
+    $scope.ueas = data.ueas;
+  });
+
+  $scope.seleccionar_trimestre = function(trimestre) {
+    $scope.trim_selec = []
+    for(var i = 0; i < $scope.ueas.length; i++) {
+      if($scope.ueas[i].uea_trimestre != undefined) {
+        if($scope.ueas[i].uea_trimestre.includes(trimestre))
+          $scope.trim_selec.push($scope.ueas[i])
+      }
+    }
+  }
+
+  $scope.descargar_excel = function() {
+    var data_type = 'data:application/vnd.ms-excel';
+  	var a = document.createElement('a');
+  	var data_type = 'data:application/vnd.ms-excel';
+  	var table_div = document.getElementById('tabla')
+  	var table_html = table_div.outerHTML.replace(/ /g, '%20');
+  	a.href = data_type + ', ' + table_html;
+  	//setting the file name
+  	a.download = 'exported_table.xls';
+  	//triggering the function
+  	a.click();
+  }
+});
+
+//====================== controlador profesores ====================
 gesApp.controller("profesoresController", function($scope, $location, $timeout, profesoresFactory) {
   $scope.msg_error = false;
   $scope.msg_correcto = false;
@@ -62,6 +104,7 @@ gesApp.controller("profesoresController", function($scope, $location, $timeout, 
 
 });
 
+//====================== controlador ueas ====================
 gesApp.controller("ueasController", function($scope, $location, $timeout, ueasFactory) {
 
   ueasFactory.get_ueas(function(data) {

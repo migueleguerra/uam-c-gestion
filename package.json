@@ -10,8 +10,13 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "angular": "^1.6.9",
+    "angular-messages": "^1.6.9",
+    "angular-route": "^1.6.9",
     "body-parser": "^1.18.2",
+    "bootstrap": "^4.1.0",
     "express": "^4.16.3",
+    "l": "^0.6.0",
     "mongoose": "^5.0.16"
   }
 }
