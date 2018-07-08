@@ -35,10 +35,10 @@ Open the web app by typing "localhost:8000" in your web browser.
 
 ## Built With
 
-* [Angularjs@1.6.9](https://angularjs.org/) - Front end framework used
-* [Express@4.16.3](http://expressjs.com/) - Back end framework used
-* [Bootstrap@4.1](https://getbootstrap.com/) - CSS framework used
-* [Mongoose@5.0.16](http://mongoosejs.com/) - MongoDB object modeling used
+* [Angularjs@1.6.9](https://angularjs.org/) - *Front end framework used*
+* [Express@4.16.3](http://expressjs.com/) - *Back end framework used*
+* [Bootstrap@4.1](https://getbootstrap.com/) - *CSS framework used*
+* [Mongoose@5.0.16](http://mongoosejs.com/) - *MongoDB object modeling used*
 
 ## Authors
 
